@@ -1,0 +1,20 @@
+select cd.design_id, l.layout_name as template_name, cd.template_id, group_concat(distinct cl.category_title) as category
+from ezt2.template_instance ti
+join ezt2.category_designs cd ON cd.template_id = ti.template_id
+join ezt2.layout l ON l.layout_id = cd.layout_id
+join ezt2.group_category_layout_xref xref ON xref.layout_id = l.layout_id
+join ezt2.group_category gc ON gc.gc_id = xref.group_category_id
+join ezt2.category_list cl ON cl.category_id = gc.catlist_id
+and ti.xdt like '%AGaramond%'
+group by cd.design_size, cd.layout_id
+
+
+select * from ezt2.user_project p
+where p.id = (job number);
+
+select * from ezt2.user_project p
+join ezt2.user_project_customizable_design up
+on p.id = up.user_project_id
+join ezt2.customizable_design d
+on up.customizable_design_id = d.id
+where p.id =1565685;
